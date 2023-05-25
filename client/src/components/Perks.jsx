@@ -15,115 +15,57 @@ const Perks = ({ selected, onChange }) => {
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
         <input
           type="checkbox"
-          checked={selected.includes("wifi")}
-          name="wifi"
+          checked={selected.includes("jednosobni")}
+          name="jednosobni"
           onChange={handleCbClick}
         />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"
-          />
-        </svg>
 
-        <span>Wifi</span>
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M0 15H1V11H14V15H15V4H14V7H1V0H0V15Z" fill="black"/> <path d="M6 6H2V5H6V6Z" fill="black"/> </svg>
+
+        <span>1 soba</span>
       </label>
+
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
         <input
           type="checkbox"
-          checked={selected.includes("parking")}
-          name="parking"
+          checked={selected.includes("visesobni")}
+          name="visesobni"
           onChange={handleCbClick}
         />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
-          />
-        </svg>
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M0 15H1V11H14V15H15V4H14V7H1V0H0V15Z" fill="black"/> <path d="M6 6H2V5H6V6Z" fill="black"/> </svg>
 
-        <span>Free parking spot</span>
+        <span>2 ili više soba</span>
       </label>
+
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
         <input
           type="checkbox"
-          checked={selected.includes("tv")}
-          name="tv"
+          checked={selected.includes("db")}
+          name="db"
           onChange={handleCbClick}
         />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z"
-          />
-        </svg>
+        <svg width="15" height="15" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <path fill="var(--ci-primary-color, currentColor)" d="M448,242.025V152a48.055,48.055,0,0,0-48-48H112a48.055,48.055,0,0,0-48,48v90.025A64.115,64.115,0,0,0,16,304V416a32.036,32.036,0,0,0,32,32H64v48H96V448H416v48h32V448h16a32.036,32.036,0,0,0,32-32V304A64.115,64.115,0,0,0,448,242.025ZM112,416H48V304a32,32,0,0,1,64,0Zm256,0H144V320H368Zm2.025-128H141.975A64.243,64.243,0,0,0,96,242.025V152a16.019,16.019,0,0,1,16-16H400a16.019,16.019,0,0,1,16,16v90.025A64.243,64.243,0,0,0,370.025,288ZM464,416H400V304a32,32,0,0,1,64,0l.02,112Z" class="ci-primary"/> </svg>
 
-        <span>TV</span>
+        <span>Dnevni boravak</span>
+      </label>
+      
+      <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
+        <input type="checkbox" checked={selected.includes("plaza")} name="plaza" onChange={handleCbClick} />
+
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <path fill="var(--ci-primary-color, currentColor)" d="M259.431,268.8l140-140-27.785-27.785A208.333,208.333,0,0,0,77.019,395.646L104.8,423.431l132-132L401.372,456h45.256ZM224.333,72a175.182,175.182,0,0,1,124.686,51.646l5.157,5.158-57.058,57.058a477.658,477.658,0,0,0-62.879-53.924C209.023,114.1,184.8,101.609,162.245,94.807a152.909,152.909,0,0,0-17.092-4.129A175.58,175.58,0,0,1,224.333,72ZM104.8,378.176l-5.158-5.157A176.637,176.637,0,0,1,66.678,169.153a153.129,153.129,0,0,0,4.129,17.092c6.8,22.556,19.3,46.778,37.131,71.994a477.658,477.658,0,0,0,53.924,62.879Zm79.7-79.7c-11.857-11.634-32.231-32.977-50.438-58.718-22.872-32.336-46.59-77.9-33.753-115.45,37.421-12.793,82.8,10.736,115.005,33.437,25.864,18.233,47.431,38.815,59.158,50.759Z" class="ci-primary"/> </svg>
+        <span>Blizina plaže</span>
+
       </label>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" checked={selected.includes("radio")} name="radio" onChange={handleCbClick} />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3.75 7.5l16.5-4.125M12 6.75c-2.708 0-5.363.224-7.948.655C2.999 7.58 2.25 8.507 2.25 9.574v9.176A2.25 2.25 0 004.5 21h15a2.25 2.25 0 002.25-2.25V9.574c0-1.067-.75-1.994-1.802-2.169A48.329 48.329 0 0012 6.75zm-1.683 6.443l-.005.005-.006-.005.006-.005.005.005zm-.005 2.127l-.005-.006.005-.005.005.005-.005.005zm-2.116-.006l-.005.006-.006-.006.005-.005.006.005zm-.005-2.116l-.006-.005.006-.005.005.005-.005.005zM9.255 10.5v.008h-.008V10.5h.008zm3.249 1.88l-.007.004-.003-.007.006-.003.004.006zm-1.38 5.126l-.003-.006.006-.004.004.007-.006.003zm.007-6.501l-.003.006-.007-.003.004-.007.006.004zm1.37 5.129l-.007-.004.004-.006.006.003-.004.007zm.504-1.877h-.008v-.007h.008v.007zM9.255 18v.008h-.008V18h.008zm-3.246-1.87l-.007.004L6 16.127l.006-.003.004.006zm1.366-5.119l-.004-.006.006-.004.004.007-.006.003zM7.38 17.5l-.003.006-.007-.003.004-.007.006.004zm-1.376-5.116L6 12.38l.003-.007.007.004-.004.007zm-.5 1.873h-.008v-.007h.008v.007zM17.25 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zm0 4.5a.75.75 0 110-1.5.75.75 0 010 1.5z"
-          />
-        </svg>
+        <input type="checkbox" checked={selected.includes("ljubimci")} name="ljubimci" onChange={handleCbClick} />
 
-        <span>Radio</span>
+        <svg width="15" height="15" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <path fill="var(--ci-primary-color, currentColor)" d="M393.3,161.33,334.532,76.438a48.09,48.09,0,0,0-38.775-20.673l-111.527-1.6-.23,0c-57.579,0-101.757,9.631-130.21,56.634C27.3,154.551,16,229.08,16,360v16H52.557L29.024,496h32.61L85.167,376H96a99.521,99.521,0,0,0,70.088-27.992c16.979-16.246,29.226-38.472,35.419-64.274l.056-.232L229.006,152h-32.69L170.337,276.488C162.425,309.168,138.766,344,96,344H48.06c.869-113.266,11.182-180.419,33.105-216.634,18.4-30.4,45.295-41.191,102.724-41.206l111.408,1.6a16.026,16.026,0,0,1,12.925,6.891L374.7,190.67,464,205.554v16.959l-14.892,79.421c-4.395,23.441-11.908,35.249-42.718,38.95L280.084,362.493,279.249,496h32l.667-106.493,98.7-16.9c22.36-2.749,38.857-9.955,50.426-22.023,9.89-10.318,15.909-23.5,19.519-42.752L496,225.487V178.446Z" class="ci-primary"/> </svg>
+
+        <span>Ljubimci</span>
+
       </label>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" checked={selected.includes("pets")} name="pets" onChange={handleCbClick} />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z"
-          />
-        </svg>
-
-        <span>Pets</span>
-      </label>
-      <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" checked={selected.includes("enterence")} name="enterence" onChange={handleCbClick} />
+        <input type="checkbox" checked={selected.includes("pristup")} name="pristup" onChange={handleCbClick} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -139,7 +81,7 @@ const Perks = ({ selected, onChange }) => {
           />
         </svg>
 
-        <span>Private Enterence</span>
+        <span>Pristup smještaju automobilom</span>
       </label>
     </div>
   );

@@ -21,7 +21,7 @@ const LoginPage = () => {
       setItemsInLocalStorage('token', data.token);
       setUser(data.user);
 
-      toast.success('Login successfull!');
+      toast.success('Prijava uspješna!');
       setRedirect(true);
     } catch (err) {
       if (err.response) {
@@ -46,25 +46,25 @@ const LoginPage = () => {
   return (
     <div className="mt-4 grow flex justify-around items-center">
       <div className="mb-40">
-        <h1 className="text-4xl text-center mb-4">Login</h1>
+        <h1 className="text-4xl text-center mb-4">Prijava</h1>
         <form className="max-w-md mx-auto" onSubmit={handleFormSubmit}>
           <input
             type="email"
-            placeholder="your@email.com"
+            placeholder="primjer@email.hr"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
-            placeholder="password"
+            placeholder="lozinka"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="primary">Login</button>
+          <button className="primary">Prijava</button>
           <div className="text-center py-2 text-gray-500">
-            Don't have an account yet?{' '}
+            Nemaš kreiran račun?{' '}
             <Link className="text-black underline" to={'/register'}>
-              Register now
+              Registriraj se!
             </Link>
           </div>
         </form>

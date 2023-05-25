@@ -55,7 +55,7 @@ const PlacesPage = () => {
               d="M12 4.5v15m7.5-7.5h-15"
             />
           </svg>
-          Add new place
+          Dodaj svoj smještaj!
         </Link>
       </div>
       <div className="mt-4 ">

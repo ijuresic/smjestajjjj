@@ -25,13 +25,13 @@ const SearchBar = () => {
         <div className="grow">
           <input
             type="search"
-            placeholder="Where you want to go?"
+            placeholder="Kamo želite ići?"
             className="w-full py-2 px-4 border-none focus:outline-none  text-sm md:text-lg"
             onChange={(e) => handleSearch(e)}
             value={searchText}
           />
         </div>
-        <div className="flex  bg-blue text-white cursor-pointer">
+        <div className="flex  bg-red text-white cursor-pointer">
           <button
             className="flex py-2 px-4 md:p-2 bg-primary rounded-r-full"
             onClick={handleSearch}

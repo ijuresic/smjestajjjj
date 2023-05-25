@@ -55,7 +55,7 @@ const BookingsPage = () => {
                         />
                       </svg>
                       <span className="text-2xl">
-                        Total price: ₹{booking.price}
+                        Ukupna cijena: €{booking.price}
                       </span>
                     </div>
                   </div>

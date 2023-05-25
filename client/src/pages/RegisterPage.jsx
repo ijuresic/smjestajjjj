@@ -17,7 +17,7 @@ const RegisterPage = () => {
         email,
         password,
       });
-      toast.success('Registration successful. Now you can login');
+      toast.success('Registracija je uspješna, sada se možete prijaviti!');
     } catch (err) {
       if (err.response) {
         const { message } = err.response.data;
@@ -33,31 +33,31 @@ const RegisterPage = () => {
   return (
     <div className="mt-4 grow flex justify-around items-center">
       <div className="mb-40">
-        <h1 className="text-4xl text-center mb-4">Register</h1>
+        <h1 className="text-4xl text-center mb-4">Registracija</h1>
         <form className="max-w-md mx-auto" onSubmit={handleRegisterForm}>
           <input
             type="text"
-            placeholder="John Doe"
+            placeholder="Ana Anić"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
             type="email"
-            placeholder="your@email.com"
+            placeholder="primjer@email.hr"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
-            placeholder="password"
+            placeholder="lozinka"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="primary">Register</button>
+          <button className="primary">Registracija</button>
           <div className="text-center py-2 text-gray-500">
-            Already a member?{' '}
+            Već si registriran?{' '}
             <Link className="text-black underline" to={'/login'}>
-              Login
+              Prijava
             </Link>
           </div>
         </form>

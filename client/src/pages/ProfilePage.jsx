@@ -40,10 +40,10 @@ const ProfilePage = () => {
       <AccountNav />
       {subpage === 'profile' && (
         <div className="text-center max-w-lg mx-auto ">
-          Logged in as {user.name} ({user.email})
+          Prijavljen kao {user.name} ({user.email})
           <br />
           <button className="primary max-w-sm mt-2" onClick={logout}>
-            Logout
+            Odjavi se
           </button>
         </div>
       )}

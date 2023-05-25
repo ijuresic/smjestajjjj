@@ -94,51 +94,51 @@ const PlacesFormPage = () => {
     <div>
       <AccountNav />
       <form onSubmit={savePlace}>
+
         {preInput(
-          'Title',
-          'title for your place. Should be short and catchy as in advertisement'
+          'Naziv smještaja',
+          'Napišite naziv svog smještaja',
         )}
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="title, for example: My lovely apt"
+          placeholder="primjerice 'Apartmani Danilo'"
         />
 
-        {preInput('Address', 'Address to this place')}
+        {preInput('Adresa', 'Adresa i grad')}
         <input
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           type="text"
-          placeholder="address"
+          placeholder="primjerice 'Jelačićev trg 15, Rijeka'"
         />
 
-        {preInput('Photos', 'more = better')}
-
+        {preInput('Fotografije', 'Što više to bolje')}
         <PhotosUploader
           addedPhotos={addedPhotos}
           setAddedPhotos={setAddedPhotos}
         />
 
-        {preInput('Description', 'description of the place')}
+        {preInput('Opis', 'Opiši svoj smještaj')}
         <textarea value={desc} onChange={(e) => setDesc(e.target.value)} />
 
-        {preInput('Perks', ' select all the perks of your place')}
+        {preInput('Obilježja', 'Obilježi važnosti tvoga smještaja')}
         <Perks selected={perks} onChange={setPerks} />
 
-        {preInput('Extra info', 'house rules, etc ')}
+        {preInput('Dodatne informacije', 'Pravila smještaja, važno za znati itd. ')}
         <textarea
           value={extraInfo}
           onChange={(e) => setExtraInfo(e.target.value)}
         />
 
         {preInput(
-          'Check in&out times',
-          'add check in and out times, remember to have some time window forcleaning the room between guests. '
+          'Prijava, odjava i cijena',
+          'Definiraj vrijeme najranije prijave i najkasnije odjave. Vodi računa o tome da moraš očistiti smješataj. '
         )}
         <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-4">
           <div>
-            <h3 className="mt-2 -mb-1">Check in time</h3>
+            <h3 className="mt-2 -mb-1">Vrijeme prijave</h3>
             <input
               type="text"
               value={checkIn}
@@ -147,7 +147,7 @@ const PlacesFormPage = () => {
             />
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Check out time</h3>
+            <h3 className="mt-2 -mb-1">Vrijeme odjave</h3>
             <input
               type="text"
               value={checkOut}
@@ -156,21 +156,12 @@ const PlacesFormPage = () => {
             />
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Max no. of guests</h3>
-            <input
-              type="text"
-              value={maxGuests}
-              onChange={(e) => setMaxGuests(e.target.value)}
-              placeholder="1"
-            />
-          </div>
-          <div>
-            <h3 className="mt-2 -mb-1">Price per night</h3>
+            <h3 className="mt-2 -mb-1">Cijena po noći</h3>
             <input
               type="text"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
-              placeholder="1"
+              placeholder="100"
             />
           </div>
         </div>

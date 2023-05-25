@@ -39,15 +39,10 @@ const BookedPlacesPage = () => {
         ))
       ) : (
         <div className="flex flex-col gap-4">
-          <h1 className="text-3xl font-semibold">No bookings... yet!</h1>
+          <h1 className="text-3xl font-semibold">Još nema rezervacija</h1>
           <p className="font-">
-            Time to dust off your bags and start planning your next adventure
+            Počni već sada planirati svoj odmor!
           </p>
-          <div className="">
-            <button className="font-semibold border border-black px-4 py-2 rounded-lg bg-transparent hover:bg-slate-100 hover:transition-all">
-              Start planning
-            </button>
-          </div>
         </div>
       )}
     </div>

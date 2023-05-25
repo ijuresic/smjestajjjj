@@ -11,12 +11,12 @@ export const Header = () => {
       <Link to={'/'} className="flex items-center gap-1">
         <img
           className="h-8 w-8 md:h-10 md:w-10"
-          src="https://cdn-icons-png.flaticon.com/512/2111/2111320.png"
+          src="https://coffective.com/wp-content/uploads/2018/06/icon-house-blue.png"
           alt=""
         />
 
-        <span className="hidden md:block font-bold text-2xl text-red-500">
-          smjestaj
+        <span className="hidden md:block font-bold text-2xl text-gray-500">
+          Početna stranica
         </span>
       </Link>
 

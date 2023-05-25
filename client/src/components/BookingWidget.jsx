@@ -47,12 +47,12 @@ const BookingWidget = ({ place }) => {
   return (
     <div className="bg-white shadow p-4 rounded-2xl">
       <div className="text-xl text-center">
-        Price: ₹{place.price} / per night
+        Cijena: {place.price} € / po noćenju
       </div>
       <div className="border rounded-2xl mt-4">
         <div className="flex">
           <div className="py-3 px-4">
-            <label>Check In: </label>
+            <label>Dolazak: </label>
             <input
               type="date"
               value={checkIn}
@@ -60,7 +60,7 @@ const BookingWidget = ({ place }) => {
             />
           </div>
           <div className="py-3 px-4 border-l">
-            <label>Check out: </label>
+            <label>Odlazak: </label>
             <input
               type="date"
               value={checkOut}
@@ -69,7 +69,7 @@ const BookingWidget = ({ place }) => {
           </div>
         </div>
         <div className="py-3 px-4 border-t">
-          <label>Number of guests: </label>
+          <label>Broj gostiju: </label>
           <input
             type="number"
             value={noOfGuests}
@@ -78,13 +78,13 @@ const BookingWidget = ({ place }) => {
         </div>
         {numberOfNights > 0 && (
           <div className="py-3 px-4 border-t">
-            <label>Your full name: </label>
+            <label>Ime i prezime: </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <label>Phone number: </label>
+            <label>Broj telefona: </label>
             <input
               type="tel"
               value={phone}
@@ -94,8 +94,8 @@ const BookingWidget = ({ place }) => {
         )}
       </div>
       <button onClick={handleBooking} className="primary mt-4">
-        Book this place
-        {numberOfNights > 0 && <span> ₹{numberOfNights * place.price}</span>}
+        Izvrši rezervaciju!
+        {numberOfNights > 0 && <span> €{numberOfNights * place.price}</span>}
       </button>
     </div>
   );
