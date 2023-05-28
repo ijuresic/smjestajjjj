@@ -7,6 +7,8 @@ import BookingDates from '../components/BookingDates';
 import PlaceGallery from '../components/PlaceGallery';
 import Spinner from '../components/Spinner';
 import PlaceCard from '../components/PlaceCard';
+import { Link } from 'react-router-dom';
+
 
 const BookedPlacesPage = () => {
   const { id } = useParams();
@@ -38,12 +40,17 @@ const BookedPlacesPage = () => {
           <PlaceCard place={booking.place} key={booking._id} />
         ))
       ) : (
-        <div className="flex flex-col gap-4">
-          <h1 className="text-3xl font-semibold">Još nema rezervacija</h1>
-          <p className="font-">
-            Počni već sada planirati svoj odmor!
-          </p>
-        </div>
+        <><div className="flex flex-col gap-4">
+                      <h1 className="text-3xl font-semibold">Još nema rezervacija</h1>
+                      <p className="font-">
+                        Počni već sada planirati svoj odmor!{' '}
+                        <Link to="/" className="text-black-500 underline">
+                            Pogledaj ponudu!
+                        </Link>
+                        </p>
+                  </div>
+                  <Link className="booking" to={'/booking'}>
+                      </Link></>
       )}
     </div>
   );

@@ -10,6 +10,7 @@ const PlacesFormPage = () => {
   const { id } = useParams();
 
   const [title, setTitle] = useState('');
+  
   const [address, setAddress] = useState('');
   const [desc, setDesc] = useState('');
   const [addedPhotos, setAddedPhotos] = useState([]);
@@ -17,7 +18,6 @@ const PlacesFormPage = () => {
   const [extraInfo, setExtraInfo] = useState('');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
-  const [maxGuests, setMaxGuests] = useState(1);
   const [redirect, setRedirect] = useState(false);
   const [price, setPrice] = useState(1500);
   const [loading, setLoading] = useState(false);
@@ -37,7 +37,6 @@ const PlacesFormPage = () => {
       setExtraInfo(place.extraInfo);
       setCheckIn(place.checkIn);
       setCheckOut(place.checkOut);
-      setMaxGuests(place.maxGuests);
       setPrice(place.price);
       setLoading(false);
     });
@@ -63,7 +62,6 @@ const PlacesFormPage = () => {
       extraInfo,
       checkIn,
       checkOut,
-      maxGuests,
       price,
     };
     if (id) {

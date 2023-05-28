@@ -47,7 +47,7 @@ const PlacePage = () => {
             <h2 className="font-semibold text-2xl">Opis</h2>
             {place.description}
           </div>
-          Prijava: {place.checkIn} <br /> Odjava: {place.checkOut} <br />
+          Najranije se možete prijaviti u {place.checkIn} sati!<br /> Najkasnije morate napraviti odjavu u {place.checkOut} sati! <br />
         </div>
         <div>
           <BookingWidget place={place} />

@@ -1,24 +1,35 @@
 import React, { useContext, useState } from 'react';
 import { PlaceContext } from '../providers/PlaceProvider';
 import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState('');
   const [searchTimeout, setSearchTimeout] = useState(null);
   const { setPlaces, setLoading } = useContext(PlaceContext);
+  const navigate = useNavigate();
+
   const handleSearch = async (e) => {
     clearTimeout(searchTimeout);
     setLoading(true);
     setSearchText(e.target.value);
 
     // debounce method
-    setTimeout(async () => {
+    const timeout = setTimeout(async () => {
       const { data } = await axios.get(`/places/search/${searchText}`);
       setPlaces(data);
       setLoading(false);
     }, 500);
+
+    setSearchTimeout(timeout);
   };
 
+  const handleCancel = () => {
+    setSearchText('');
+    setPlaces(null);
+    navigate('/');
+  };
+  
   return (
     <>
       <div className="flex w-3/5 md:w-1/2 bg-gray-300 border border-gray-400 rounded-full overflow-hidden shadow-sm hover:shadow-lg">
@@ -51,6 +62,27 @@ const SearchBar = () => {
               />
             </svg>
             <span className="hidden md:block ml-1">Pretraži</span>
+          </button>
+          <button
+            className="flex py-2 px-4 md:p-2 bg-primary rounded-full"
+            onClick={handleCancel}
+          >
+            <span className="hidden md:block ml-1">Poništi</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"          
+              strokeWidth={3}
+              stroke="currentColor"
+              className="w-4 h-4 mt-1"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="currentColor"
+              />
+            </svg>
           </button>
         </div>
       </div>
