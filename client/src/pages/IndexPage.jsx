@@ -24,8 +24,8 @@ const IndexPage = () => {
             <div className="bg-gray-500 mb-2 rounded-2xl flex">
               {place.photos?.[0] && <Image src={place.photos?.[0]} />}
             </div>
-            <h2 className="font-bold">{place.address}</h2>
-            <h3 className="text-sm text-gray-500 ">{place.title}</h3>
+            <h1 className="font-bold">{place.title}</h1>
+            <h3 className="text-sm text-gray-500 ">{place.address}</h3>
             <div className="mt-1">
               <span className="font-semibold">{place.price} € </span>
               po noćenju
