@@ -8,25 +8,35 @@ import AccountNav from "../components/AccountNav";
 import AddressLink from "../components/AddressLink";
 import BookingDates from "../components/BookingDates";
 
-
 const BookedPlacesPage = () => {
   const { id } = useParams();
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (id) {
-      const getBookings = async () => {
+    const getBookings = async () => {
+      try {
         const { data } = await axios.get('/bookings');
-        if (data.error) {
-          toast.error(data.error.message);
-        }
         setBookings(data);
         setLoading(false);
-      };
-      getBookings();
+      } catch (error) {
+        toast.error('Greška prilikom dohvaćanja rezervacija.');
+      }
+    };
+
+    getBookings();
+  }, []);
+
+  const handleCancelBooking = async (bookingId) => {
+    try {
+      await axios.delete(`/bookings/${bookingId}`);
+      // Ukloni otkazanu rezervaciju iz lokalnog stanja
+      setBookings((prevBookings) => prevBookings.filter((booking) => booking._id !== bookingId));
+      toast.success('Rezervacija je uspješno otkazana.');
+    } catch (error) {
+      toast.error('Došlo je do pogreške prilikom otkazivanja rezervacije.');
     }
-  }, [id]);
+  };
 
   if (loading) {
     return <Spinner />;
@@ -45,21 +55,23 @@ const BookedPlacesPage = () => {
               <div>
                 <BookingDates booking={booking} />
               </div>
-              
-                <div className="text-xl">Ukupna cijena: {booking.price} €</div>
-                <div className="flex flex-col gap-4">
-              <div className="bg-primary p-6 text-white rounded-xl">
-                
-              {booking.place && (
-                <p className="font-">
-                  <Link to={`/place/${booking.place._id}`} key={booking.place._id}>
-                    <button className="bg-primary text-white font-bold py-2 px-4 rounded">
-                      Detalji o smještaju
+              <div className="text-xl">Ukupna cijena: {booking.price} €</div>
+              <div className="flex flex-col gap-4">
+                {booking.place && (
+                  <p className="font-">
+                    <Link to={`/place/${booking.place._id}`} key={booking.place._id}>
+                      <button className="bg-primary text-white font-bold py-2 px-4 rounded">
+                        Detalji o smještaju
+                      </button>
+                    </Link>
+                    <button
+                      className="bg-red-500 text-white font-bold py-2 px-4 rounded"
+                      onClick={() => handleCancelBooking(booking._id)}
+                    >
+                      Otkaži rezervaciju
                     </button>
-                  </Link>
-                </p>
-              )}
-            </div>
+                  </p>
+                )}
               </div>
             </div>
           </div>
