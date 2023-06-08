@@ -14,6 +14,7 @@ const IndexPage = () => {
 
   useEffect(() => {
     console.log("places", places)
+    axios.get('/api/index', { headers: { 'Cache-Control': 'no-cache' } });
   }, [places])
 
   return (
