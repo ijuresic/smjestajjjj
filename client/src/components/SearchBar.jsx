@@ -27,7 +27,7 @@ const SearchBar = () => {
   const handleCancel = () => {
     setSearchText('');
     setPlaces(null);
-    navigate('/');
+    navigate ("/");
   };
   
   return (
