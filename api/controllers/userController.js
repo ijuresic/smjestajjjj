@@ -10,7 +10,7 @@ exports.register = async (req, res) => {
 
     if (!name || !email || !password) {
       return res.status(400).json({
-        message: 'name, email and password are required',
+        message: 'Ime, email i lozinka su obavezni!',
       });
     }
 
@@ -19,7 +19,7 @@ exports.register = async (req, res) => {
 
     if (user) {
       return res.status(400).json({
-        message: 'User already registered',
+        message: 'Korisnik već postoji',
       });
     }
 
@@ -61,12 +61,12 @@ exports.login = async (req, res) => {
         });
       } else {
         res.status(401).json({
-          message: 'email or password is incorrect',
+          message: 'email ili lozinka su netočni',
         });
       }
     } else {
       res.status(400).json({
-        message: 'User not found',
+        message: 'Korisnik nije pronađen!',
       });
     }
   } catch (err) {
@@ -96,6 +96,6 @@ exports.profile = async (req, res) => {
 
 exports.logout = async (req, res) => {
   res.cookie('token', '').json({
-    message: 'logged out successfully!',
+    message: 'Uspješna odjava!',
   });
 };

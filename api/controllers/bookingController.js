@@ -35,7 +35,7 @@ exports.getBookings = async (req, res) => {
     if (!userData) {
       return res
         .status(401)
-        .json({ error: 'You are not authorized to access this page!' });
+        .json({ error: 'Nemaš ovlasti pristupiti ovoj stranici!' });
     }
     res
       .status(200)
@@ -48,3 +48,20 @@ exports.getBookings = async (req, res) => {
     });
   }
 };
+
+exports.cancelBooking = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const booking = await Booking.findById(id);
+  
+      if (!booking) {
+        return res.status(404).json({ error: 'Rezervacija nije pronađena.' });
+      }
+  
+      await Booking.findByIdAndDelete(id);
+  
+      res.status(200).json({ message: 'Rezervacija je uspješno otkazana.' });
+    } catch (error) {
+      res.status(500).json({ error: 'Došlo je do pogreške prilikom otkazivanja rezervacije.' });
+    }
+  };

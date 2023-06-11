@@ -1,4 +1,4 @@
-    const Place = require('../models/Place');
+const Place = require('../models/Place');
 const userFromToken = require('../utils/userFromToken');
 
 exports.addPlace = async (req, res) => {
@@ -135,16 +135,23 @@ exports.singlePlace = async (req, res) => {
 
 exports.userPlaces = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const places = await Place.find({ owner: userId });
+    const userData = await userFromToken(req);
+    if (!userData) {
+      return res.status(401).json({ error: 'Nemaš ovlasti pristupiti ovoj stranici!' });
+    }
+
+    const places = await Place.find({ owner: userData.id });
     res.status(200).json(places);
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       message: 'Internal server error',
+      error: err,
     });
   }
 };
 
+  
 exports.searchPlaces = async (req, res) => {
   try {
     const searchword = req.params.key;
