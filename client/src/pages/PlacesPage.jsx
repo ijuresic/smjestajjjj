@@ -14,12 +14,16 @@ const PlacesPage = () => {
     const token = getItemFromLocalStorage('token');
     const getPlaces = async () => {
       try {
+
+        const token = getItemFromLocalStorage('token');
+        console.log(token);
+
         const { data } = await axios.get('places/user-places', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(data)
+        console.log(data);
         setPlaces(data);
         setLoading(false);
       } catch (error) {
@@ -58,7 +62,7 @@ const PlacesPage = () => {
           Dodaj svoj smještaj!
         </Link>
       </div>
-      <div className="mt-4 ">
+      <div className="mt-4">
         {places.length > 0 &&
           places.map((place) => <PlaceCard place={place} key={place._id} />)}
       </div>
