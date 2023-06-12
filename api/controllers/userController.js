@@ -44,7 +44,7 @@ exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    console.log('baba')
+   
     if (user) {
       const validatedPassword = await bcrypt.compare(password, user.password);
       if (validatedPassword) {
@@ -52,6 +52,8 @@ exports.login = async (req, res) => {
           { email: user.email, id: user._id.toString() },
           'baba',
         );
+
+
 
         user.password = undefined;
 

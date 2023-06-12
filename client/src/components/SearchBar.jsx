@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { PlaceContext } from '../providers/PlaceProvider';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,14 +9,33 @@ const SearchBar = () => {
   const { setPlaces, setLoading } = useContext(PlaceContext);
   const navigate = useNavigate();
 
+  const handleTextChange = (e) => {
+    setSearchText(e.target.value)
+  }
+
+  useEffect(() => {
+    setLoading(true);
+
+    
+    const timeout = setTimeout(async () => {
+      console.log(searchText)
+      const { data } = await axios.get(`/places${searchText.length ? `/search/${searchText}` : ""}`);
+      setPlaces(searchText.length ? data : data.places);
+      setLoading(false);
+    }, 500);
+
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [searchText])
+
   const handleSearch = async (e) => {
     clearTimeout(searchTimeout);
     setLoading(true);
-    setSearchText(e.target.value);
 
-    // debounce method
+    
     const timeout = setTimeout(async () => {
-      const { data } = await axios.get(`/places/search/${searchText}`);
+      const { data } = await axios.get(`/places/search${searchText ? `/${searchText}` : ""}`);
       setPlaces(data);
       setLoading(false);
     }, 500);
@@ -38,7 +57,7 @@ const SearchBar = () => {
             type="search"
             placeholder="Kamo želite ići?"
             className="w-full py-2 px-4 border-none focus:outline-none  text-sm md:text-lg"
-            onChange={(e) => handleSearch(e)}
+            onChange={handleTextChange}
             value={searchText}
           />
         </div>
@@ -63,27 +82,7 @@ const SearchBar = () => {
             </svg>
             <span className="hidden md:block ml-1">Pretraži</span>
           </button>
-          <button
-            className="flex py-2 px-4 md:p-2 bg-primary rounded-full"
-            onClick={handleCancel}
-          >
-            <span className="hidden md:block ml-1">Poništi</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"          
-              strokeWidth={3}
-              stroke="currentColor"
-              className="w-4 h-4 mt-1"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-                stroke="currentColor"
-              />
-            </svg>
-          </button>
+          
         </div>
       </div>
     </>
