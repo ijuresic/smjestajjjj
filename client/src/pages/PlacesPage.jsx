@@ -5,6 +5,7 @@ import AccountNav from '../components/AccountNav';
 import { getItemFromLocalStorage } from '../utils';
 import Spinner from '../components/Spinner';
 import PlaceCard from '../components/PlaceCard';
+import { toast } from 'react-toastify';
 
 const PlacesPage = () => {
   const [places, setPlaces] = useState([]);
@@ -14,16 +15,11 @@ const PlacesPage = () => {
     const token = getItemFromLocalStorage('token');
     const getPlaces = async () => {
       try {
-
-        const token = getItemFromLocalStorage('token');
-        console.log(token);
-
         const { data } = await axios.get('places/user-places', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(data);
         setPlaces(data);
         setLoading(false);
       } catch (error) {
@@ -32,6 +28,22 @@ const PlacesPage = () => {
     };
     getPlaces();
   }, []);
+
+  const handleDeletePlace = async (placeId) => {
+    try {
+      const token = getItemFromLocalStorage('token');
+      await axios.delete(`/places/${placeId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setPlaces((prevPlaces) => prevPlaces.filter((place) => place._id !== placeId));
+      toast.success('Vaš smještaj je uspješno obrisan!');
+    } catch (error) {
+      console.log(error);
+      toast.error('Došlo je do pogreške prilikom brisanja smještaja.');
+    }
+  };
 
   if (loading) {
     return <Spinner />;
@@ -64,7 +76,17 @@ const PlacesPage = () => {
       </div>
       <div className="mt-4">
         {places.length > 0 &&
-          places.map((place) => <PlaceCard place={place} key={place._id} />)}
+          places.map((place) => (
+            <div key={place._id}>
+              <PlaceCard place={place} />
+              <button
+                className="bg-red-500 text-white font-bold py-2 px-4 rounded"
+                onClick={() => handleDeletePlace(place._id)}
+              >
+                Obriši smještaj
+              </button>
+            </div>
+          ))}
       </div>
     </div>
   );

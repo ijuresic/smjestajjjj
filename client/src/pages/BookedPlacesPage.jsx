@@ -16,7 +16,7 @@ const BookedPlacesPage = () => {
   useEffect(() => {
     const getBookings = async () => {
       try {
-        const { data } = await axios.get('/bookings',);
+        const { data } = await axios.get('/bookings');
         setBookings(data);
         setLoading(false);
       } catch (error) {

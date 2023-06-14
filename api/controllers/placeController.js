@@ -17,16 +17,7 @@ exports.addPlace = async (req, res) => {
       maxGuests,
       price,
     } = req.body;
-    console.log(title,
-      address,
-      addedPhotos,
-      desc,
-      perks,
-      extraInfo,
-      checkIn,
-      checkOut,
-      maxGuests,
-      price)
+
     const place = await Place.create({
       owner: userData.id,
       title,
@@ -55,7 +46,6 @@ exports.addPlace = async (req, res) => {
 exports.getPlaces = async (req, res) => {
   try {
     const places = await Place.find();
-    console.log(places)
     res.status(200).json({
       places,
     });
@@ -151,7 +141,6 @@ exports.userPlaces = async (req, res) => {
   }
 };
 
-  
 exports.searchPlaces = async (req, res) => {
   try {
     const searchword = req.params.key;
@@ -165,8 +154,25 @@ exports.searchPlaces = async (req, res) => {
     }
   } catch (err) {
     console.log(err)
-    res.status(  500).json({
+    res.status(500).json({
       message: 'Internal server error',
     });
+  }
+};
+
+exports.deletePlace = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const place = await Place.findById(id);
+
+    if (!place) {
+      return res.status(404).json({ error: 'Smještaj nije pronađen.' });
+    }
+
+    await Place.findByIdAndDelete(id);
+
+    res.status(200).json({ message: 'Smještaj je uspješno obrisan.' });
+  } catch (error) {
+    res.status(500).json({ error: 'Došlo je do pogreške prilikom brisanja smještaja.' });
   }
 };
